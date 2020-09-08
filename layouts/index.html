@@ -20,8 +20,8 @@
     
     
     <!-- This doesn't work -->
-    Counter (expected output 2): {{ len (where $.Site.Data.marker ".render" true) }} <br/>
-    Counter (expected output 2): {{ len (where $.Site.Data.marker ".render" "true") }} <br/>
+    Counter (expected output 2): {{ len (where $.Site.Data.marker ".render" false) }} <br/>
+    Counter (expected output 2): {{ len (where $.Site.Data.marker ".render" "false") }} <br/>
     Counter (expected output 3): {{ len (where $.Site.Data.marker ".render" "ne" "kajdsksajl") }} <br/>
 
     <br/>
