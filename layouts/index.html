@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <style>
+      // your CSS here
+    </style>
+    <title>{{ .Title }}</title>
+  </head>
+  <body>
+    <h1>{{ .Title }}</h1>    
+    
+    <!-- This works as expected -->
+    {{ $counter := int "0" }}
+    
+    {{ range $.Site.Data.marker }}
+        {{ if ne .render true }}
+            {{ $counter = add $counter 1 }}
+        {{ end }}
+    {{ end }}
+    Counter (expected output 2): {{ $counter }} <br/>
+    
+    
+    <!-- This doesn't work -->
+    Counter (expected output 2): {{ len (where $.Site.Data.marker ".render" true) }} <br/>
+    Counter (expected output 2): {{ len (where $.Site.Data.marker ".render" "true") }} <br/>
+    Counter (expected output 3): {{ len (where $.Site.Data.marker ".render" "ne" "kajdsksajl") }} <br/>
+
+    <br/>
+    <br/>
+
+    <!-- Some debugging -->
+
+    {{ range $.Site.Data.marker }}
+        {{ printf "%#v" . }} <br/>
+    {{ end }}
+    
+    <br/>
+    
+    
+    {{ printf "%#v" $.Site.Data.marker }}
+    
+    <script>
+      // your JS here
+    </script>
+  </body>
+</html>
